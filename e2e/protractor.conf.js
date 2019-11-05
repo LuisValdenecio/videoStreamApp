@@ -13,6 +13,12 @@ exports.config = {
     './src/**/*.e2e-spec.ts'
   ],
   capabilities: {
+    capabilities: {
+      chromeOptions: {
+        args: [ "--headless" ]
+      },
+      'browserName': 'chrome'
+    },
     browserName: 'chrome'
   },
   directConnect: true,
@@ -22,11 +28,5 @@ exports.config = {
     showColors: true,
     defaultTimeoutInterval: 30000,
     print: function() {}
-  },
-  onPrepare() {
-    require('ts-node').register({
-      project: require('path').join(__dirname, './tsconfig.json')
-    });
-    jasmine.getEnv().addReporter(new SpecReporter({ spec: { displayStacktrace: true } }));
   }
 };
